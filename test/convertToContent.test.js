@@ -21,8 +21,8 @@ this.timeout(500);//500ms
 /**
  *
  */
-describe('TestTitle', function(){
-  it('actionHere', function(){
+describe('Convert format to nuxt/$content', function(){
+  it('asdf', function(){
     //assert.strictEqual(1,1);//require assert
   });
 });
