@@ -57,7 +57,14 @@ export const weapons = [
  *
  *  */
 export const singularWeapons = [
-  "Axe","Bow","Crossbow","Dagger","Javelin","Mace","Polearm","Scepter","Spear","Stave","Sword","Throwing","Wand"
+  "Axe","Bow","Crossbow","Dagger",
+  // "Javelin",
+  "Mace","Polearm","Scepter","Spear",
+  // "Stave"
+  "Staff"
+  ,"Sword"
+  // ,"Throwing"
+  ,"Wand"
 ];
 
 
@@ -150,7 +157,16 @@ describe('Convert format to nuxt/$content', function(){
     //[ 'Javelin', 'Polearm', 'Stave', 'Throwing' ]
     // console.log('length difference', weapons.length - notUsedWeapons.length );
     assert.strictEqual(singularWeapons.length - usedWeaponsRaw.length, 0)
-    assert.strictEqual(notUsedWeapons.length, 4)
+    // assert.strictEqual(notUsedWeapons.length, 4);
+    /**
+     * stave to staff
+     * removed throwing, jav
+     *
+     * this might not be the best idea... might be better just to get each weapon and map it
+     *
+     */
+    assert.strictEqual(notUsedWeapons.length, 3);
+
 
 
 
