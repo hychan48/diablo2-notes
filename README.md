@@ -1,5 +1,16 @@
 # diablo2-notes
 
+## Objective
+1. Summerize useful stuff from 
+	https://htmlpreview.github.io/?https://github.com/Michaelangel007/d2_cheat_sheet/blob/master/index.html
+2. Add licence
+3. For finding for runewords easier
+	* i.e. 4 socket sword - best area to find
+4. Document common maps / speedrun builds
+5. Power level map ranges
+* Maybe different between hardcore and softcore locations
+
+
 ## Build Setup
 
 ```bash
