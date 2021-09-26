@@ -2,7 +2,7 @@
 // const require = createRequire(import.meta.url);
 // const assert = require('assert');
 // const {describe,it} = require('mocha');
-// import assert from 'assert';
+import assert from 'assert';
 // import { describe, it} from 'mocha';
 
 import {describe,it} from "mocha";
@@ -123,6 +123,7 @@ describe('Convert format to nuxt/$content', function(){
 
     /**
      * Bubble sort test
+     * raw as in it shows null
      */
     const usedWeaponsRaw = singularWeapons.map(singularWeapon =>{
       for (let i = 0; i < itemNames.length; i++) {
@@ -130,14 +131,11 @@ describe('Convert format to nuxt/$content', function(){
         const itemName = itemNames[i];
 
         const oRegex = new RegExp(singularWeapon,'i')
-
-
-        /* found */
+        /* found. ie.e /Axe/i.test(something axe) */
         if(oRegex.test(itemName)){
           // console.log(singularWeapon);
           return singularWeapon;
         }
-
       }
 
     });
@@ -146,10 +144,11 @@ describe('Convert format to nuxt/$content', function(){
     const notUsedWeapons =
       _.differenceWith(singularWeapons, usedWeapons, _.isEqual);
 
-
     console.log(notUsedWeapons);
     //[ 'Javelin', 'Polearm', 'Stave', 'Throwing' ]
-    console.log('length difference', weapons.length - notUsedWeapons.length );
+    // console.log('length difference', weapons.length - notUsedWeapons.length );
+    assert.strictEqual(singularWeapons.length - usedWeaponsRaw.length, 0)
+    assert.strictEqual(notUsedWeapons.length, 4)
 
 
 
