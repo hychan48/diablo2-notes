@@ -3,7 +3,7 @@
   <v-card
     :hover=false
   >
-  
+
     <v-card-title notes="Diablo 2 Notes"
 
     >
