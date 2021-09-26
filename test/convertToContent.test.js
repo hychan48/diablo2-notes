@@ -54,7 +54,7 @@ export const weapons = [
  *  stave.. is staff. and dagger is knife? or is it both
  *
  *  */
-export const singularWeapon = [
+export const singularWeapons = [
   "Axe","Bow","Crossbow","Dagger","Javelin","Mace","Polearm","Scepter","Spear","Stave","Sword","Throwing","Wand"
 ];
 
@@ -87,23 +87,71 @@ function readXLSX(filepath=path.resolve('static/rawFiles/socketItems.xlsx')){
   const rows = XLSX.utils.sheet_to_json(ws);
   return rows;
 }
+
+const _ = require('lodash');
+
 describe('Convert format to nuxt/$content', function(){
 
+  let socketItemXLSXJSON;
+  let itemNames;//item names only... i.e. 'Bone Knife'
   it('Read xlsx file first', function(){
     //assert.strictEqual(1,1);//require assert
     // const oData = await readXLSX();
     // console.log(oData);
     const aOData = readXLSX();
+    socketItemXLSXJSON = aOData;
 
   });
-  it('singular weapons',function(){
-    // return true;
+  it('generate singular weapons array',function(){
+    return true;
     // const single = pluralize.singular('singles') //=> "singular"
     // console.log(single);
     const singular = weapons.map(plural =>{
       return pluralize.singular(plural);
     });
     console.log(JSON.stringify(singular));
+  })
+  /**
+   * Return a list that is not used
+   *
+   * which in weapons is not used?
+   */
+  it('check which singular weapon isnt used', function(){
+    itemNames = socketItemXLSXJSON.map(val => val.Item);
+    // console.log(itemNames);
+    //['Bone Knife']
+
+    /**
+     * Bubble sort test
+     */
+    const usedWeaponsRaw = singularWeapons.map(singularWeapon =>{
+      for (let i = 0; i < itemNames.length; i++) {
+        // const itemName = itemNames[i];
+        const itemName = itemNames[i];
+
+        const oRegex = new RegExp(singularWeapon,'i')
+
+
+        /* found */
+        if(oRegex.test(itemName)){
+          // console.log(singularWeapon);
+          return singularWeapon;
+        }
+
+      }
+
+    });
+
+    const usedWeapons = usedWeaponsRaw.filter(val => val);
+    const notUsedWeapons =
+      _.differenceWith(singularWeapons, usedWeapons, _.isEqual);
+
+
+    console.log(notUsedWeapons);
+    //[ 'Javelin', 'Polearm', 'Stave', 'Throwing' ]
+    console.log('length difference', weapons.length - notUsedWeapons.length );
+
+
 
   })
 });
