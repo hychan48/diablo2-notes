@@ -1,6 +1,15 @@
 import colors from 'vuetify/es5/util/colors'
+const env = {
+  // BASE_URL : process.env.NUXT_BASE_URL || 'http://localhost:3000',//auto-overides but might be useful
+  BASE_URL: process.env.NUXT_ENV_BASE_URL || 'http://localhost:3000',
+  ROUTER_BASE: process.env.NUXT_ENV_ROUTER_BASE || '/',
+
+  //Will be populated
+  // baseUrl:undefined,
+};
 
 export default {
+  env,
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -18,10 +27,12 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: env.ROUTER_BASE + 'favicon.ico' }
     ]
   },
-
+  router: {
+    base: env.ROUTER_BASE,
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
