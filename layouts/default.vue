@@ -33,18 +33,21 @@
       <v-btn
         icon
         @click.stop="miniVariant = !miniVariant"
+        v-if="1===12"
       >
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
       <v-btn
         icon
         @click.stop="clipped = !clipped"
+        v-if="1===12"
       >
         <v-icon>mdi-application</v-icon>
       </v-btn>
       <v-btn
         icon
         @click.stop="fixed = !fixed"
+        v-if="1===12"
       >
         <v-icon>mdi-minus</v-icon>
       </v-btn>
@@ -53,6 +56,7 @@
       <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
+        v-if="1===12"
       >
         <v-icon>mdi-menu</v-icon>
       </v-btn>
@@ -67,6 +71,7 @@
       :right="right"
       temporary
       fixed
+      v-if="1===12"
     >
       <v-list>
         <v-list-item @click.native="right = !right">
