@@ -7,6 +7,14 @@
 3. For finding for runewords easier
 	* i.e. 4 socket sword - best area to find
 4. Document common maps / speedrun builds
+	* find countess
+		1. around the perimator
+		2. around home
+		3. around 
+		* always go left of character
+		* 3 rights go left?
+			https://www.youtube.com/watch?v=s2FI9vIhGaM
+
 5. Power level map ranges
 * Maybe different between hardcore and softcore locations
 
