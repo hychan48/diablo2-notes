@@ -110,7 +110,13 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Resources',
           to: '/resourcesPage'
-        }
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Content',
+          to: '/dev/devContentDataPage'
+        },
+
       ],
       miniVariant: false,
       right: true,
