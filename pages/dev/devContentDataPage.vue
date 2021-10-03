@@ -24,7 +24,13 @@
       <br/>
       <hr/>
       <nuxt-content :document="page"/>
-      <pre>{{page}}</pre>
+<!--      <pre>{{page}}</pre>-->
+<!--      https://vuetifyjs.com/en/components/treeview/-->
+      <v-treeview
+        :items="treeViewItems"
+      >
+
+      </v-treeview>
 
 
     </v-card-text>
@@ -55,6 +61,11 @@ export default {
   data() {
     return {
       page: null,
+    }
+  },
+  computed: {
+    treeViewItems() {
+      return [this.page];
     }
   },
 }
