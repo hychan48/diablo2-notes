@@ -23,13 +23,17 @@
       >https://d2.maxroll.gg/d2-drop-calculator</a>
       <br/>
       <hr/>
+<!--      this only works for md?-->
+<!--      https://nuxtjs.org/docs/directory-structure/content/-->
       <nuxt-content :document="page"/>
 <!--      <pre>{{page}}</pre>-->
 <!--      https://vuetifyjs.com/en/components/treeview/-->
+      <pre>{{!!page}}</pre>
+      <pre>{{treeViewItems}}</pre>
       <v-treeview
+        v-if="!!page"
         :items="treeViewItems"
       >
-
       </v-treeview>
 
 
@@ -50,6 +54,10 @@ export default {
 
       /* fetch comes last */
       .fetch()
+
+      /* cant chain fetch */
+      // .only('msf')//keys
+      // .fetch()
       .catch(err => {
         error({statusCode: 404, message: "Page not found"});
       });
@@ -64,8 +72,24 @@ export default {
     }
   },
   computed: {
+    /**
+     * needs to be converted into array...
+     * todo
+     * @return {*[]}
+     */
     treeViewItems() {
-      return [this.page];
+      // return [this.page];
+      // return [this.page];
+      if(this.page){
+        return Object.entries(this.page).map( ([key,value]) =>{
+
+          return {
+            id:key,
+          }
+        });
+      }
+
+
     }
   },
 }
