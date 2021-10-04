@@ -46,7 +46,8 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-btn
-            color="red lighten-2"
+            ssssscolor="red lighten-2"
+            color="primary"
             dark
             v-bind="attrs"
             v-on="on"
@@ -57,7 +58,7 @@
         <v-card>
 <!--          <pre>{{treeViewItems}}</pre>-->
 <!--          <pre>{{this.page.weapons}}</pre>-->
-          <pre>{{this.page}}</pre>
+          <pre>{{page}}</pre>
         </v-card>
       </v-dialog>
     </v-card-actions>
@@ -72,7 +73,8 @@ export default {
     // const slug = params.slug || "index";//from demo
     // const slug = params.slug || "hello";//hello.md is the file name
     // const slug = params.slug || "d2_data_raw";
-    const slug = params.slug || "d2_data_content";
+    // const slug = params.slug || "d2_data_content";
+    const slug = "d2_data_content";
     const page = await $content(slug)
       // .only('weapons')//keys
 

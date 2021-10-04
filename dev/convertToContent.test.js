@@ -222,8 +222,8 @@ describe('Convert d2_data_raw.json for nuxt/$content', function(){
       }
 
     });
-    
-    console.log(oOut);
+
+    console.log(oOut.length);
 
 
 
