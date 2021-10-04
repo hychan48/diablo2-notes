@@ -29,7 +29,7 @@
 <!--      <pre>{{page}}</pre>-->
 <!--      https://vuetifyjs.com/en/components/treeview/-->
       <pre>{{!!page}}</pre>
-      <pre>{{treeViewItems}}</pre>
+<!--      <pre>{{treeViewItems}}</pre>-->
       <v-treeview
         v-if="!!page"
         :items="treeViewItems"
@@ -38,11 +38,79 @@
 
 
     </v-card-text>
+    <v-card-actions>
+      <v-spacer/>
+      <v-dialog
+        v-model="dialog"
+        width="500"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="red lighten-2"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            Click Me
+          </v-btn>
+        </template>
+        <v-card>
+<!--          <pre>{{treeViewItems}}</pre>-->
+<!--          <pre>{{this.page.weapons}}</pre>-->
+          <pre>{{this.page}}</pre>
+        </v-card>
+      </v-dialog>
+    </v-card-actions>
   </v-card>
 </v-col>
 </template>
 
 <script>
+/**
+ *     "weapons":
+ {
+        "hax":
+        {
+            "name": "Hand Axe",
+            "type": "axe",
+            "code": "hax",
+            "namestr": "hax",
+            "normcode": "hax",
+            "ubercode": "9ha",
+            "ultracode": "7ha",
+            "wclass": "1hs",
+            "2handedwclass": "1hs",
+            "invfile": "invhax",
+            "uniqueinvfile": "invhaxu",
+            "setinvfile": "invhaxu",
+            "spawnable": 1,
+            "version": 0,
+            "mindam": 3,
+            "maxdam": 6,
+            "bitfield1": 3,
+            "strbonus": 100,
+            "durability": 28,
+            "level": 3,
+            "levelreq": 0,
+            "cost": 170,
+            "invwidth": 1,
+            "invheight": 3,
+            "hasinv": 1,
+            "gemsockets": 2,
+            "gemapplytype": 0,
+            "unique": 0,
+            "belt": 0,
+            "invtrans": 2,
+            "skipname": 0,
+            "missiletype": 35,
+            "hd": "axe/hand_axe"
+        },
+ */
+
+
+/**
+ * Check https://vuetifyjs.com/en/components/virtual-scroller/
+ */
 export default {
   name: "devContentDataPage",
   async asyncData({ $content, params, error }) {
@@ -52,6 +120,7 @@ export default {
     const page = await $content(slug)
       .only('weapons')//keys
 
+      // .search("hd", "axe/double_axe")
       /* fetch comes last */
       .fetch()
 
@@ -69,11 +138,17 @@ export default {
   data() {
     return {
       page: null,
+
+
+      // dialog:true,
+      dialog:false,
     }
   },
   computed: {
     /**
      * needs to be converted into array...
+     *
+     * id, name, children is the format
      * todo
      * @return {*[]}
      */
@@ -81,12 +156,24 @@ export default {
       // return [this.page];
       // return [this.page];
       if(this.page){
-        return Object.entries(this.page).map( ([key,value]) =>{
+        //page has stuff injected into from $content nuxt
+        return Object.entries(this.page?.weapons)
+          .map( ([key,value]) =>{
 
           return {
+            // id:key,
             id:key,
+            name:value.name,
+            children:[
+              // Object.key
+            ],
+
           }
-        });
+        })
+          .filter((value,i) => {
+            return i < 5
+          })
+          ;
       }
 
 

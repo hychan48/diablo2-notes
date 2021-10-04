@@ -66,7 +66,19 @@ export default {
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
-  content: {},
+  content: {
+
+    //https://content.nuxtjs.org/configuration#nestedproperties
+    nestedProperties: ['weapons.2handedwclass'],//probably wont work until change
+    /**
+     *
+     .where({
+        // "weapons.2handedwclass":"1hs",//just testing nestedProps
+        "2handedwclass":"1hs",//just testing nestedProps
+      })
+     */
+
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
