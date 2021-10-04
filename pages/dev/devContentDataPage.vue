@@ -28,13 +28,13 @@
       <nuxt-content :document="page"/>
 <!--      <pre>{{page}}</pre>-->
 <!--      https://vuetifyjs.com/en/components/treeview/-->
-      <pre>{{!!page}}</pre>
-      <pre>{{treeViewItems}}</pre>
-      <v-treeview
-        v-if="!!page"
-        :items="treeViewItems"
-      >
-      </v-treeview>
+<!--      <pre>{{!!page}}</pre>-->
+<!--      <pre>{{treeViewItems}}</pre>-->
+<!--      <v-treeview-->
+<!--        v-if="!!page"-->
+<!--        :items="treeViewItems"-->
+<!--      >-->
+<!--      </v-treeview>-->
 
 
     </v-card-text>
@@ -48,7 +48,8 @@ export default {
   async asyncData({ $content, params, error }) {
     // const slug = params.slug || "index";//from demo
     // const slug = params.slug || "hello";//hello.md is the file name
-    const slug = params.slug || "d2_data_raw";
+    // const slug = params.slug || "d2_data_raw";
+    const slug = params.slug || "d2_data_content";
     const page = await $content(slug)
       .only('weapons')//keys
 

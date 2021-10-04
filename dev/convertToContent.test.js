@@ -99,6 +99,8 @@ function readXLSX(filepath=path.resolve('static/rawFiles/socketItems.xlsx')){
 
 const _ = require('lodash');
 
+import fs from 'fs'
+// const {ERR_GSC} = require(path.resolve("server/dev/GatherSysConfig/constants.js"));
 describe('Convert format to nuxt/$content', function(){
 
   let socketItemXLSXJSON;
@@ -172,3 +174,56 @@ describe('Convert format to nuxt/$content', function(){
 
   })
 });
+
+const D2DataRaw = require(path.resolve('content/d2_data_raw.json'))
+const FILEOUT_PATH = 'content/d2_data_content.json'
+describe('Convert d2_data_raw.json for nuxt/$content', function(){
+  let oOut;
+
+  /**
+   * smaller sample size
+   * i want
+   *
+   * from weapons:{
+   *   hax:{
+   *     name,type,etc...
+   *   }
+   * };
+   * to ...[id, than used computed?
+   */
+  it('Generate only weapons first',function(){
+    const {weapons} = D2DataRaw;
+    // oOut = weapons;//og
+    //want slug as id i think
+    //then replace oOut.
+    //so for each key.
+    oOut = [];
+    const tmp = Object.entries(weapons);
+    // console.log(tmp[0]);
+
+    oOut = tmp.map(([key,value])=>{
+      console.log(key,value);
+      //or just change slug to code... in this instance
+      return {
+        slug:key,//should append the parent's name...
+        //i think it's same as code
+        ...value
+
+      }
+
+    });
+
+
+
+
+
+  });
+
+  it('finally writes to file',function(){
+    fs.writeFileSync(FILEOUT_PATH,
+      JSON.stringify(oOut))
+  });
+
+});
+
+
