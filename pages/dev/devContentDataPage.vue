@@ -24,7 +24,10 @@
       <br/>
       <hr/>
 <!--      this only works for md?-->
-<!--      https://nuxtjs.org/docs/directory-structure/content/ -->
+<!--      https://nuxtjs.org/docs/directory-structure/content/
+    seems only useful for md... anythign else not good.. uses
+    "prism" theme for code blocks.. that one might be interesting
+-->
       <nuxt-content :document="page"/>
 <!--      <pre>{{page}}</pre>-->
 <!--      https://vuetifyjs.com/en/components/treeview/-->
@@ -71,13 +74,13 @@ export default {
   name: "devContentDataPage",
   async asyncData({ $content, params, error }) {
     // const slug = params.slug || "index";//from demo
-    // const slug = params.slug || "hello";//hello.md is the file name
+    const slug = params.slug || "hello";//hello.md is the file name
     // const slug = params.slug || "d2_data_raw";
     // const slug = params.slug || "d2_data_content";
-    let slug = "d2_data_content";
+    // let slug = "d2_data_content";
     // slug =+ `?time=${Date.now()}`
     const page = await $content(slug)
-      .limit(5)
+      // .limit(5)
       // .only('weapons')//keys
 
       /* fetch comes last */
