@@ -28,8 +28,8 @@
     seems only useful for md... anythign else not good.. uses
     "prism" theme for code blocks.. that one might be interesting
 -->
-      <nuxt-content :document="page"/>
-<!--      <pre>{{page}}</pre>-->
+<!--      <nuxt-content :document="page"/>-->
+      <pre>{{page}}</pre>
 <!--      https://vuetifyjs.com/en/components/treeview/-->
 <!--      <pre>{{!!page}}</pre>-->
 <!--      <pre>{{treeViewItems}}</pre>-->

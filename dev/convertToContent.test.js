@@ -175,7 +175,7 @@ describe('Convert format to nuxt/$content', function(){
   })
 });
 
-const D2DataRaw = require(path.resolve('content/d2_data_raw.json'))
+const D2DataRaw = require(path.resolve('static/s_content/d2_data_raw.json'))
 const FILEOUT_PATH = 'content/d2_data_content.json'
 describe('Convert d2_data_raw.json for nuxt/$content', function(){
   let oOut;
@@ -207,7 +207,7 @@ describe('Convert d2_data_raw.json for nuxt/$content', function(){
     // console.log(tmp[0]);
 
     oOut = tmp.map(([key,value])=>{
-      console.log(key,value);
+      // console.log(key,value);
       //or just change slug to code... in this instance
       return {
         slug:key,//should append the parent's name...
