@@ -40,7 +40,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
 
-    '@/plugins/update.client.js',//@nuxt/content dev hot-reload...
+    // '@/plugins/update.client.js',//@nuxt/content dev hot-reload...
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -66,12 +66,12 @@ export default {
       lang: 'en'
     }
   },
-
+  watch: ['~/content/d2_data_content.json'],
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
 
     //https://content.nuxtjs.org/configuration#nestedproperties
-    nestedProperties: ['weapons.2handedwclass'],//probably wont work until change
+    // nestedProperties: ['weapons.2handedwclass'],//probably wont work until change
     /**
      *
      .where({

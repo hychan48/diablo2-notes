@@ -74,8 +74,10 @@ export default {
     // const slug = params.slug || "hello";//hello.md is the file name
     // const slug = params.slug || "d2_data_raw";
     // const slug = params.slug || "d2_data_content";
-    const slug = "d2_data_content";
+    let slug = "d2_data_content";
+    // slug =+ `?time=${Date.now()}`
     const page = await $content(slug)
+      .limit(5)
       // .only('weapons')//keys
 
       /* fetch comes last */

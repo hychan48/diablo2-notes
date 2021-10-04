@@ -18,6 +18,7 @@ export default function ({ store }) {
       $nuxt.$on('content:update', ({ event, path }) => {
         // Refresh the store categories
         console.log('dispatch???');
+        //how should i do this... wth touch the file?
         // store.dispatch('fetchCategories')
       })
     })
