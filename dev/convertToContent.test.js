@@ -190,6 +190,11 @@ describe('Convert d2_data_raw.json for nuxt/$content', function(){
    *   }
    * };
    * to ...[id, than used computed?
+   *
+   * content is
+   * title,
+   *
+   * oh right.. it caches
    */
   it('Generate only weapons first',function(){
     const {weapons} = D2DataRaw;
@@ -207,11 +212,18 @@ describe('Convert d2_data_raw.json for nuxt/$content', function(){
       return {
         slug:key,//should append the parent's name...
         //i think it's same as code
-        ...value
+        // ...value,
+
+        title:'tsup',
+        description:'dsup',
+        // html:"<br/>"
+
 
       }
 
     });
+    
+    console.log(oOut);
 
 
 

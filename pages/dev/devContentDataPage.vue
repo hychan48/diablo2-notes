@@ -24,7 +24,7 @@
       <br/>
       <hr/>
 <!--      this only works for md?-->
-<!--      https://nuxtjs.org/docs/directory-structure/content/-->
+<!--      https://nuxtjs.org/docs/directory-structure/content/ -->
       <nuxt-content :document="page"/>
 <!--      <pre>{{page}}</pre>-->
 <!--      https://vuetifyjs.com/en/components/treeview/-->
@@ -74,7 +74,7 @@ export default {
     // const slug = params.slug || "d2_data_raw";
     const slug = params.slug || "d2_data_content";
     const page = await $content(slug)
-      .only('weapons')//keys
+      // .only('weapons')//keys
 
       /* fetch comes last */
       .fetch()
@@ -93,6 +93,8 @@ export default {
   data() {
     return {
       page: null,
+
+      dialog:false,
     }
   },
   computed: {

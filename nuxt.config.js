@@ -39,6 +39,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+
+    '@/plugins/update.client.js',//@nuxt/content dev hot-reload...
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
