@@ -2,9 +2,12 @@
  * Nuxt / $content handling hot reload...
  * https://content.nuxtjs.org/advanced/
  *
+ *
+ *
+ * nuxt.config.js
  * export default {
   plugins: [
-    '@/plugins/update.client.js'
+    '@/plugins/update.client.js',//@nuxt/content dev hot-reload...
   ]
 }
  */
