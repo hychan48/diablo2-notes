@@ -116,6 +116,11 @@ export default {
           title: 'Content',
           to: '/dev/devContentDataPage'
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Sorc Frames',
+          to: '/dev/devSorcNotes'
+        },
 
       ],
       miniVariant: false,
