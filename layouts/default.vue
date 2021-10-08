@@ -121,6 +121,11 @@ export default {
           title: 'Sorc Frames',
           to: '/dev/devSorcNotes'
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Area Level',
+          to: '/dev/devAreaLevel'
+        },
 
       ],
       miniVariant: false,

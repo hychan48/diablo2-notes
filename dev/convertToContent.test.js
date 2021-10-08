@@ -101,6 +101,10 @@ const _ = require('lodash');
 
 import fs from 'fs'
 // const {ERR_GSC} = require(path.resolve("server/dev/GatherSysConfig/constants.js"));
+
+/**
+ * Should be deprecrated with the new d2_data_content from the website
+ */
 describe('Convert format to nuxt/$content', function(){
 
   let socketItemXLSXJSON;
@@ -173,6 +177,31 @@ describe('Convert format to nuxt/$content', function(){
 
 
   })
+});
+
+
+/**
+ * Let's just ry to csv for now
+ * this is for expansion
+ */
+describe('Convert Area Level XLSX format to nuxt/$content', function(){
+
+  let oAreaLevel;
+  let itemNames;//item names only... i.e. 'Bone Knife'
+  it('Read xlsx file first', function(){
+    //assert.strictEqual(1,1);//require assert
+    // const oData = await readXLSX();
+    // console.log(oData);
+    const aOData = readXLSX(
+
+      path.resolve('static/rawFiles/area_level.xlsx')
+
+    );
+    oAreaLevel = aOData;
+
+    console.log(oAreaLevel);
+
+  });
 });
 
 const D2DataRaw = require(path.resolve('static/s_content/d2_data_raw.json'))
