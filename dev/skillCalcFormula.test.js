@@ -71,12 +71,15 @@ const EnchantData = {
 };
 
 const EnchantMinMulti = [1.5,3.5,5.5,7.5,9.5];
-
+const EnchantMinC = [6.5, -9.5, -41.5, -85.5, -141.5]
 
 
 describe('Sorc Enchant', function(){
+  /**
+   *
+   */
   it('parseIntoArray', function(){
-    //assert.strictEqual(1,1);//require assert
+    return true;
     const input = EnchantData;
     const minMulti = [];
     for (let i = 1; i <= 5; i++) {
@@ -87,6 +90,31 @@ describe('Sorc Enchant', function(){
     EnchantMinMulti.forEach((val,i) =>{
       assert.strictEqual(minMulti[i],val)
     })
+  });
+
+  it('Find the algorithm for c', function(){
+    const N = 7;
+    // ranges are weird for sure 8,8,5,5,99 - 28
+    const Breakpoints = [8, 16,22,28,29]
+
+    const i = 3;
+    const val = EnchantMinC[i];
+    const tmp = (EnchantData.emin / 2 ) - ( (i + 1) * EnchantMinMulti[i])
+    assert.strictEqual(tmp, val)
 
   });
+  it('Full Test algorithm for c', function(){
+
+
+    EnchantMinC.forEach((val,i)=>{
+      const tmp = (EnchantData.emin / 2 ) - (EnchantMinMulti[i])
+      assert.strictEqual(tmp, val)
+    });
+
+
+
+  });
+
+
+
 });
