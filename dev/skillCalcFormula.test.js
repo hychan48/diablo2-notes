@@ -85,8 +85,27 @@ const EnchantData = {
   "enhanceable": 1
 };
 
-const EnchantMinMulti = [1.5,3.5,5.5,7.5,9.5];
-const EnchantMinC = [6.5, -9.5, -41.5, -85.5, -141.5];
+/**
+ *  Enchant
+ * https://www.theamazonbasin.com/wiki/index.php?title=Enchant
+ */
+// const EnchantMinMulti = [1.5,3.5,5.5,7.5,9.5];
+// const EnchantMinC = [6.5, -9.5, -41.5, -85.5, -141.5];
+
+/**
+ *  cold bolt
+ *  https://www.theamazonbasin.com/wiki/index.php?title=Ice_Bolt
+ *
+ *  */
+// const EnchantMinMulti = [1,2,3,4,5];
+// const EnchantMinC = [2, -6, -22, -44, -72];//ice bolt
+
+/**
+ * Fire bolt
+ */
+const EnchantMinMulti = [1.5,2,4,9,27];
+const EnchantMinC = [1.5, -2.5, -34.5, -144.5, -648.5];//ice bolt
+
 //hard coded breakpoitns
 const Breakpoints = [
   [1,8], //1
@@ -129,13 +148,26 @@ describe('Sorc Enchant', function(){
   it('Full Test algorithm for c', function(){
 
 
-    EnchantMinC.forEach((val,i)=>{
-      const tmp = (EnchantData.emin / 2 ) - (EnchantMinMulti[i])
-      assert.strictEqual(tmp, val)
-    });
+    const firstEle = EnchantMinC[0];
+    // console.log(EnchantMinC.length);
+    for (let i = 1; i < EnchantMinC.length; i++) {
+      const val = EnchantMinC[i];
+      // console.log(val);
+      // const tmp = (EnchantData.emin / 2 ) - (EnchantMinMulti[i])
+      const a15 =  EnchantMinMulti[i]
+      const aC = val;
+      const tmp = aC - firstEle
+      // console.log(tmp, i, tmp  / Math.pow(2,i));
+      // console.log(tmp, i, tmp  / Math.pow(2,EnchantMinMulti[i]));
+      console.log(tmp, i, tmp  / EnchantMinMulti[i]);
+      // console.log('a15',a15);
+      // console.log('aC',aC);
+      // assert.strictEqual(tmp, val)
+    }
   });
 
   it('Graph Enchant data for level', function(){
+    return true;
     /**
      * i is the index multipelr
      * j is the level
