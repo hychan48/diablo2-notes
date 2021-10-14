@@ -71,7 +71,15 @@ const EnchantData = {
 };
 
 const EnchantMinMulti = [1.5,3.5,5.5,7.5,9.5];
-const EnchantMinC = [6.5, -9.5, -41.5, -85.5, -141.5]
+const EnchantMinC = [6.5, -9.5, -41.5, -85.5, -141.5];
+//hard coded breakpoitns
+const Breakpoints = [
+  [1,8], //1
+  [9,16],//2
+  [17,22],//3
+  [23,28],//4
+  [29,99]//5
+  ];
 
 
 describe('Sorc Enchant', function(){
@@ -95,7 +103,7 @@ describe('Sorc Enchant', function(){
   it('Find the algorithm for c', function(){
     const N = 7;
     // ranges are weird for sure 8,8,5,5,99 - 28
-    const Breakpoints = [8, 16,22,28,29]
+
 
     const i = 3;
     const val = EnchantMinC[i];
