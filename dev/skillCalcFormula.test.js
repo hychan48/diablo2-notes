@@ -19,7 +19,22 @@ this.timeout(500);//500ms
 
 http://www.theamazonbasin.com/wiki/index.php?title=Enchant
 */
+const XLSX = require('xlsx');
+function exportToExcel(data,header,filename="out.xlsx"){
+  const wb = XLSX.utils.book_new();
+  const ws_name = "sheet1";
 
+  //Full dump. probably want to do something special and or maybe add filteres
+  const ws = XLSX.utils.json_to_sheet(
+    data,
+    {header},
+    // ,{header:["S","h","e","e_1","t","J","S_1"]}
+  );
+
+
+  XLSX.utils.book_append_sheet(wb, ws, ws_name);
+  XLSX.writeFile(wb, filename);
+}
 const EnchantData = {
   "skill": "Enchant",
   "charclass": "sor",
@@ -79,7 +94,7 @@ const Breakpoints = [
   [17,22],//3
   [23,28],//4
   [29,99]//5
-  ];
+];
 
 
 describe('Sorc Enchant', function(){
@@ -118,11 +133,31 @@ describe('Sorc Enchant', function(){
       const tmp = (EnchantData.emin / 2 ) - (EnchantMinMulti[i])
       assert.strictEqual(tmp, val)
     });
+  });
+
+  it('Graph Enchant data for level', function(){
+    /**
+     * i is the index multipelr
+     * j is the level
+     * @type {*[]}
+     */
+    const aOut = [];//not a buffer cuz lazy
+    for (let i = 0; i < Breakpoints.length; i++) {
+      const ranges = Breakpoints[i];
+      const [start, end] = ranges;
+      for (let j = start; j <= end; j++) {
+        const minDmg = EnchantMinMulti[i] * j + EnchantMinC[i];
+        aOut.push({
+          lvl:j,
+          minDmg
+        })
+      }
+    }
+
+    /* make xlsx */
+    exportToExcel(aOut,null,'dev/enchantMinDmg.xlsx')
 
 
 
   });
-
-
-
 });
