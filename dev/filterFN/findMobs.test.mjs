@@ -112,11 +112,15 @@ describe('findMobs.test.mjs', function(){
     // }
 
     let out;
-    out = _.filter(aMonsters, function(o) {
-      return o.resfih <= 0;
-    });
+    for (let i = 0; i < 50; i+= 10) {
+      out = _.filter(aMonsters, function(o) {
+        // return o.resfih <= 10;
+        return o.resfih <= i;
+      });
 
-    console.log(out.map(val => val.namestr));
+      console.log(i,out.map(val => val.namestr));
+    }
+
 
   });
 
