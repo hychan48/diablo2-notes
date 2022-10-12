@@ -176,6 +176,7 @@ this.timeout(500);//500ms
  * @param data will automatically be changed
  */
 import fs from 'node:fs';
+import XLSX from 'xlsx'
 function writeToFile(fileName,data,space=2){
   const sFileName = /\./.test(fileName) ? fileName : fileName + '.json';
   const filePath = `dev/pbs/test/${sFileName}`
@@ -185,9 +186,49 @@ function writeToFile(fileName,data,space=2){
 }
 let d2DataRaw = JSON.parse(fs.readFileSync("static/s_content/d2_data_raw.json"));
 let {armor,misc,weapons,uniqueItems} = d2DataRaw;
+import _ from "lodash"
 describe('findNormExElite', function(){
   it('create excel armor', function(){
     //assert.strictEqual(1,1);//require assert
     //            "hd": "helmet/mask"
+    let out;
+    out = _.groupBy(Object.values(armor),"hd")
+
+    const oGroupedByValues = Object.values(out);
+    let oSheet = [];
+    for (let i = 0; i < oGroupedByValues.length; i++) {
+      const row = oGroupedByValues[i];
+      try{
+        assert.strictEqual(row.length, 3);
+        //assume sorted
+        const normal=row[0].name,
+          type=row[0].hd.split('/')[0],
+        exceptional=row[1].name,
+        elite=row[2].name;
+
+        oSheet.push(
+          // normal,exceptional,elite,type
+          {normal, exceptional, elite, type}
+
+        )
+
+      }catch (e) {
+        /**
+         * Circlets are weird. ignoring for now
+         * https://diablo-archive.fandom.com/wiki/Circlets_(Diablo_II)#:~:text=The%20Circlet%20is%20equivalent%20to,circlets%20when%20they%20are%20dropped.
+         */
+        if(row[0]?.type !== 'circ'){
+          console.error(row)
+        }
+      }
+    }
+    console.log(oSheet);
+
+    const ws = XLSX.utils.json_to_sheet(oSheet)
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    XLSX.writeFile(wb, "static/rawFiles/armor_by_quality_and_type.xlsx");
+
+    // console.log(out);
   });
 });
