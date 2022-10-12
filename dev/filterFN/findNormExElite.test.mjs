@@ -222,12 +222,61 @@ describe('findNormExElite', function(){
         }
       }
     }
-    console.log(oSheet);
+    // console.log(oSheet);
 
     const ws = XLSX.utils.json_to_sheet(oSheet)
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
     XLSX.writeFile(wb, "static/rawFiles/armor_by_quality_and_type.xlsx");
+
+    // console.log(out);
+  });
+
+  it('create excel weapon', function(){
+    //assert.strictEqual(1,1);//require assert
+    //            "hd": "helmet/mask"
+    let out;
+    out = _.groupBy(Object.values(weapons),"hd")
+
+    const oGroupedByValues = Object.values(out);
+    let oSheet = [];
+    for (let i = 0; i < oGroupedByValues.length; i++) {
+      const row = oGroupedByValues[i];
+      try{
+        assert.strictEqual(row.length, 3);
+        //assume sorted
+        const normal=row[0].name,
+          type=row[0].hd.split('/')[0],
+          exceptional=row[1].name,
+          elite=row[2].name;
+
+        oSheet.push(
+          // normal,exceptional,elite,type
+          {normal, exceptional, elite, type}
+
+        )
+
+      }catch (e) {
+        /**
+         * type tpot
+         */
+        if(row[0]?.type !== 'tpot'){
+
+        }
+        else if(row[0]?.unique !== 1){
+
+        }
+        else{
+          console.error(row)
+        }
+      }
+    }
+    // console.log(oSheet);
+
+    const ws = XLSX.utils.json_to_sheet(oSheet)
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    XLSX.writeFile(wb, "static/rawFiles/weapon_by_quality_and_type.xlsx");
 
     // console.log(out);
   });
